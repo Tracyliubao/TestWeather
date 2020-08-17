@@ -1,8 +1,10 @@
-package com.tracy.testweather
+package com.tracy.testweather.ui.place
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
+import com.tracy.testweather.logic.Repository
+import com.tracy.testweather.logic.model.Place
 
 /**
  * 描述：

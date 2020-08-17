@@ -1,4 +1,4 @@
-package com.tracy.testweather
+package com.tracy.testweather.logic.network
 
 import retrofit2.Call
 import retrofit2.Callback
@@ -15,7 +15,8 @@ import kotlin.coroutines.suspendCoroutine
  * <br/>创建时间：2020/8/16上午10:08.
  */
 object SunnyWeatherNetwork {
-    private val placeService = ServiceCreator.create(PlaceService::class.java)
+    private val placeService =
+        ServiceCreator.create(PlaceService::class.java)
 
     suspend fun searchPlaces(query : String) = placeService.searchPlace(query).await()
 

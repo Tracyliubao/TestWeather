@@ -1,5 +1,7 @@
-package com.tracy.testweather
+package com.tracy.testweather.logic.network
 
+import com.tracy.testweather.logic.model.PlaceResponse
+import com.tracy.testweather.SunnyWeatherApplication
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query

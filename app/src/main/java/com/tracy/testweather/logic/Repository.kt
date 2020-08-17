@@ -1,6 +1,8 @@
-package com.tracy.testweather
+package com.tracy.testweather.logic
 
 import androidx.lifecycle.liveData
+import com.tracy.testweather.logic.model.Place
+import com.tracy.testweather.logic.network.SunnyWeatherNetwork
 import kotlinx.coroutines.Dispatchers
 import java.lang.Exception
 

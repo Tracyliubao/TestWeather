@@ -1,4 +1,4 @@
-package com.tracy.testweather
+package com.tracy.testweather.logic.model
 
 import com.google.gson.annotations.SerializedName
 
