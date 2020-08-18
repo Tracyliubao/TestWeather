@@ -58,7 +58,7 @@ class PlaceFragment : Fragment() {
     }
 
     private fun isAlreadySelectedCity(){
-        if (activity is MainActivity && viewModel.isPlaceSaved()){
+        if (activity is MainActivity && viewModel.isPlaceSaved()){//只有当fragment嵌入MainActivity中才执行
             val place = viewModel.getSavedPlace()
             val intent = Intent(context,WeatherActivity::class.java).apply {
                 putExtra("location_lng",place.location.lng)
