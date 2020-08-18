@@ -1,6 +1,8 @@
 package com.tracy.testweather.logic
 
 import androidx.lifecycle.liveData
+import com.tracy.testweather.logic.dao.PlaceDao
+import com.tracy.testweather.logic.model.Place
 import com.tracy.testweather.logic.model.Weather
 import com.tracy.testweather.logic.network.SunnyWeatherNetwork
 import kotlinx.coroutines.Dispatchers
@@ -53,4 +55,10 @@ object Repository {
         }
         emit(result)//类似于LiveData的setValue
     }
+
+    fun savePlace(place: Place) = PlaceDao.savePlace(place)
+
+    fun getSavedPlace() = PlaceDao.getSavedPlace()
+
+    fun isPlaceSaved() = PlaceDao.isPlaceSaved()
 }

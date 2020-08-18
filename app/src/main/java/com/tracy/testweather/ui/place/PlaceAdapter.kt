@@ -12,7 +12,7 @@ import com.tracy.testweather.logic.model.Place
 import com.tracy.testweather.logic.model.Weather
 import com.tracy.testweather.ui.weather.WeatherActivity
 
-class PlaceAdapter(private val fragment:Fragment,private val placeList:List<Place>) :
+class PlaceAdapter(private val fragment:PlaceFragment,private val placeList:List<Place>) :
     RecyclerView.Adapter<PlaceAdapter.ViewHolder>(){
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
@@ -31,7 +31,9 @@ class PlaceAdapter(private val fragment:Fragment,private val placeList:List<Plac
                 putExtra("location_lat",place.location.lat)
                 putExtra("place_name",place.name)
             }
+            fragment.viewModel.savePlace(place)
             fragment.startActivity(intent)
+            fragment.activity?.finish()
         }
         return holder
     }
