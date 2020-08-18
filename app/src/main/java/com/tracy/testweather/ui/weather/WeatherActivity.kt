@@ -1,5 +1,6 @@
 package com.tracy.testweather.ui.weather
 
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -25,6 +26,9 @@ class WeatherActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val decorView = window.decorView
+        decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN or View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+        window.statusBarColor = Color.TRANSPARENT
         setContentView(R.layout.activity_weather)
         if (viewModel.lng.isEmpty()){
             viewModel.lng = intent.getStringExtra("location_lng") ?: ""
@@ -44,8 +48,19 @@ class WeatherActivity : AppCompatActivity() {
                 Toast.makeText(this,"无法成功获取天气信息",Toast.LENGTH_SHORT).show()
                 it.exceptionOrNull()?.printStackTrace()
             }
+            swipeRefresh.isRefreshing = false
         })
+
+        swipeRefresh.setColorSchemeResources(R.color.colorPrimary)
+        refreshWeather()
+        swipeRefresh.setOnRefreshListener {
+            refreshWeather()
+        }
+    }
+
+    private fun refreshWeather(){
         viewModel.refreshWeather(viewModel.lng,viewModel.lat)
+        swipeRefresh.isRefreshing = true
     }
 
     private fun showWeatherInfo(weather: Weather){
